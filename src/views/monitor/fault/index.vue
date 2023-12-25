@@ -1,5 +1,5 @@
 <template>
-  <div id="myChart"></div>
+  <div id="myChart" />
 </template>
 
 <style>
@@ -37,7 +37,7 @@ export default {
     }
     // this.loadData()
 
-    //this.drawLine();
+    // this.drawLine();
   },
   methods: {
     // 将来可以用来点击点，进行路由到对应的代码详细信息
@@ -49,7 +49,7 @@ export default {
       if (param.dataType == 'node') {
         console.log('点击了节点', param)
       }
-      this.$router.push({ path: '/fault/funcDetail', query: { code1: 445177401023668152, code2: 445177401023669296 } })
+      this.$router.push({ path: '/fault/funcDetail', query: { code1: 445177401023668152, code2: 445177401023669296 }})
     },
     drawLine() {
       const myChart = this.$echarts.init(document.getElementById('myChart'))
@@ -69,7 +69,7 @@ export default {
         series: [
           {
             type: 'graph', // 类型:关系图
-            layout: 'force', //图的布局，类型为力导图
+            layout: 'force', // 图的布局，类型为力导图
             symbolSize: 40, // 调整节点的大小
             legendHoverLink: true,
             hoverAnimation: true,

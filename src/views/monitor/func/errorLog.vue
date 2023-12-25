@@ -82,7 +82,7 @@ export default {
     // 获取异常详情
     info(id) {
       this.dialog = true
-      this.errorInfo = "asdasdasd"
+      this.errorInfo = 'asdasdasd'
       // getErrDetail(id).then(res => {
       //   this.errorInfo = res.exception
       // })

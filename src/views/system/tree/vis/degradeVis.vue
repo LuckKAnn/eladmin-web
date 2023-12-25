@@ -1,5 +1,5 @@
 <template>
-  <div id="myDegrade"></div>
+  <div id="myDegrade" />
 </template>
 
 <style>
@@ -11,15 +11,6 @@
 <script>
 export default {
   name: 'DegradeVis',
-  data() {
-    return {
-      scatterData: [],
-      detailData: []
-    }
-  },
-  mounted() {
-    this.loadData()
-  },
   props: {
     datas: {
       type: Array,
@@ -28,6 +19,12 @@ export default {
     dataDetail: {
       type: Array,
       required: true
+    }
+  },
+  data() {
+    return {
+      scatterData: [],
+      detailData: []
     }
   },
   watch: {
@@ -45,6 +42,9 @@ export default {
     //   this.filledWithColor(this.$props.datas)
     //   this.drawLine()
     // }
+  },
+  mounted() {
+    this.loadData()
   },
   methods: {
     filledWithColor(scatterList) {
@@ -64,10 +64,9 @@ export default {
         '#98df8a', // 淡绿色
         '#ff9896', // 淡红色
         '#c5b0d5', // 淡紫色
-        '#c49c94'  // 淡棕色
+        '#c49c94' // 淡棕色
       ]
       for (var i = 0; i < scatterList.length; i++) {
-
         var coordinate = scatterList[i]
         var color = colors[i]
         this.scatterData.push({
@@ -95,36 +94,36 @@ export default {
       if (param.dataType == 'node') {
         console.log('点击了节点', param)
       }
-      this.$router.push({ path: '/fault/funcDetail', query: { code1: 445177401023668152, code2: 445177401023669296 } })
+      this.$router.push({ path: '/fault/funcDetail', query: { code1: 445177401023668152, code2: 445177401023669296 }})
     },
     drawLine() {
       const myChart = this.$echarts.init(document.getElementById('myDegrade'))
       myChart.on('click', this.redirectTo)
       myChart.setOption({
-            tooltip: {
-              backgroundColor: 'rgba(255,255,0,0.7)',
-              formatter: function(params) {
-                var data = params.data
-                console.log('this is params datas', data)
-                var name = data.name
-                var value = data.value
-                var functionName = data.functionName
-                return '<div style="border-bottom: 1px solid rgba(0,0,0,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
-                    + 'Node Name: ' + name + '<br>' +
+        tooltip: {
+          backgroundColor: 'rgba(255,255,0,0.7)',
+          formatter: function(params) {
+            var data = params.data
+            console.log('this is params datas', data)
+            var name = data.name
+            var value = data.value
+            var functionName = data.functionName
+            return '<div style="border-bottom: 1px solid rgba(0,0,0,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">' +
+                    'Node Name: ' + name + '<br>' +
                     '函数信息: ' + functionName + '<br>' +
                     'Coordinate: (' + value[0] + ', ' + value[1] + ')'
-              }
-            },
-            xAxis: {},
-            yAxis: {},
-            series: [
-              {
-                symbolSize: 20,
-                data: this.scatterData,
-                type: 'scatter'
-              }
-            ]
           }
+        },
+        xAxis: {},
+        yAxis: {},
+        series: [
+          {
+            symbolSize: 20,
+            data: this.scatterData,
+            type: 'scatter'
+          }
+        ]
+      }
       )
     }
   }

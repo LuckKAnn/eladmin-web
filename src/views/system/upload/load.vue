@@ -1,32 +1,32 @@
 <template>
   <div class="app-container" style="padding: 8px;">
     <!--工具栏-->
-<!--    <el-form ref="form" :model="form" size="small" label-width="800px">-->
-      <!--   上传文件   -->
-<!--      <el-form-item label="上传" >-->
-        <el-upload
-          ref="upload"
-          :limit="1"
-          :before-upload="beforeUpload"
-          :auto-upload="false"
-          :headers="headers"
-          :on-success="handleSuccess"
-          :on-error="handleError"
-          :action="fileUploadApi + '?name=' + form.name"
-        >
-          <div class="eladmin-upload" style="width: 1300px; height: 100px">
-            <i class="el-icon-upload"/> 添加文件
-            <div slot="tip" class="el-upload__tip">可上传任意格式文件，且不超过100M</div>
-          </div>
+    <!--    <el-form ref="form" :model="form" size="small" label-width="800px">-->
+    <!--   上传文件   -->
+    <!--      <el-form-item label="上传" >-->
+    <el-upload
+      ref="upload"
+      :limit="1"
+      :before-upload="beforeUpload"
+      :auto-upload="false"
+      :headers="headers"
+      :on-success="handleSuccess"
+      :on-error="handleError"
+      :action="fileUploadApi + '?name=' + form.name"
+    >
+      <div class="eladmin-upload" style="width: 1300px; height: 100px">
+        <i class="el-icon-upload" /> 添加文件
+        <div slot="tip" class="el-upload__tip">可上传任意格式文件，且不超过100M</div>
+      </div>
 
-        </el-upload>
-<!--      </el-form-item>-->
-<!--    </el-form>-->
-<!--      <el-button type="text" @click="crud.cancelCU">取消</el-button>-->
-    <el-divider></el-divider>
+    </el-upload>
+    <!--      </el-form-item>-->
+    <!--    </el-form>-->
+    <!--      <el-button type="text" @click="crud.cancelCU">取消</el-button>-->
+    <el-divider />
     <el-col :span="12"> <el-button type="primary" @click="upload">执行上传</el-button></el-col>
-<!--      <el-button type="primary" @click="upload">上传</el-button>-->
-      <!--          <el-button v-else :loading="crud.status.cu === 2" type="primary" @click="crud.submitCU">确认</el-button>-->
+    <!--      <el-button type="primary" @click="upload">上传</el-button>-->
+    <!--          <el-button v-else :loading="crud.status.cu === 2" type="primary" @click="crud.submitCU">确认</el-button>-->
   </div>
 </template>
 
@@ -44,9 +44,12 @@ const defaultForm = { id: null, name: '' }
 export default {
   components: { pagination, crudOperation, rrOperation, DateRangePicker },
   cruds() {
-    return CRUD({ title: '文件', url: 'api/localStorage', crudMethod: { ...crudFile } })
+    return CRUD({ title: '文件', url: 'api/localStorage', crudMethod: { ...crudFile }})
   },
   mixins: [presenter(), header(), form(defaultForm), crud()],
+  props: {
+    data: {}
+  },
   data() {
     return {
       delAllLoading: false,
@@ -57,9 +60,6 @@ export default {
         del: ['admin', 'storage:del']
       }
     }
-  },
-  props: {
-    data: {}
   },
   computed: {
     ...mapGetters([

@@ -9,7 +9,7 @@ export function getDepts(params) {
 }
 
 export function getPath(params) {
-  console.log("this vis path"+ params)
+  console.log('this vis path' + params)
   return request({
     url: 'process/path?path=' + params,
     method: 'get'

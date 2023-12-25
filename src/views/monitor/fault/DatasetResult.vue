@@ -26,7 +26,7 @@
       <!--      </el-descriptions-item>-->
 
       <el-descriptions-item label="恶意代码标识">
-        <Graph></Graph>
+        <Graph />
       </el-descriptions-item>
     </el-descriptions>
   </div>
@@ -46,8 +46,8 @@ require('codemirror/mode/css/css.js')
 require('codemirror/mode/sql/sql.js')
 require('codemirror/mode/shell/shell.js')
 
-import 'codemirror/lib/codemirror.css'//引入样式文件
-require('codemirror/mode/javascript/javascript.js')//引入JavaScript格式结合option里面的mode使用
+import 'codemirror/lib/codemirror.css'// 引入样式文件
+require('codemirror/mode/javascript/javascript.js')// 引入JavaScript格式结合option里面的mode使用
 // 折叠功能需引入的文件start
 import 'codemirror/addon/fold/foldgutter.css'
 import 'codemirror/addon/fold/foldcode'
@@ -66,20 +66,10 @@ export default {
   components: { Graph },
   cruds() {
     return [
-      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict } })
+      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict }})
     ]
   },
   mixins: [presenter(), header(), form(defaultForm)],
-  beforeCreate() {
-    this.initGetInfo()
-  },
-  created() {
-    console.log('roter data:', this.$router)
-    console.log('roter data:', this.$route.query)
-    console.log('roter data:', this.$router.params)
-    console.log('roter data:', this.props)
-    this.initGetInfo()
-  },
   data() {
     return {
       options: {
@@ -93,7 +83,7 @@ export default {
         smartIndent: true, // 上下文缩进
         lineNumbers: true, // 是否显示行号
         styleActiveLine: true, // 高亮选中行
-        viewportMargin: Infinity, //处理高度自适应时搭配使用
+        viewportMargin: Infinity, // 处理高度自适应时搭配使用
         showCursorWhenSelecting: true, // 当选择处于活动状态时是否应绘制游标
         mode: 'javascript'
       },
@@ -118,6 +108,16 @@ export default {
       codeInfoTwo: {},
       showCode: null
     }
+  },
+  beforeCreate() {
+    this.initGetInfo()
+  },
+  created() {
+    console.log('roter data:', this.$router)
+    console.log('roter data:', this.$route.query)
+    console.log('roter data:', this.$router.params)
+    console.log('roter data:', this.props)
+    this.initGetInfo()
   },
   methods: {
     // 获取数据前设置好接口地址

@@ -1,16 +1,16 @@
 <template>
   <div class="app-container">
     <div class="head-container">
-      <Search/>
+      <Search />
       <crudOperation>
         <el-button
-            slot="left"
-            class="filter-item"
-            type="danger"
-            icon="el-icon-delete"
-            size="mini"
-            :loading="crud.delAllLoading"
-            @click="confirmDelAll()"
+          slot="left"
+          class="filter-item"
+          type="danger"
+          icon="el-icon-delete"
+          size="mini"
+          :loading="crud.delAllLoading"
+          @click="confirmDelAll()"
         >
           清空
         </el-button>
@@ -18,16 +18,20 @@
     </div>
     <el-row>
       <el-col :span="12">
-        <DegradeVis :datas="scatterArray" :dataDetail="compareDetailData"></DegradeVis>
+        <DegradeVis :datas="scatterArray" :data-detail="compareDetailData" />
       </el-col>
       <el-col :span="12">
-        <HeatMapVis  :score-array="scoreArray"></HeatMapVis>
+        <HeatMapVis :score-array="scoreArray" />
       </el-col>
     </el-row>
-    <el-divider></el-divider>
+    <el-divider />
     <!--表格渲染-->
-    <el-table ref="table" v-loading="loading" :data="compareDetailData" style="width: 100%;"
-              @selection-change="crud.selectionChangeHandler"
+    <el-table
+      ref="table"
+      v-loading="loading"
+      :data="compareDetailData"
+      style="width: 100%;"
+      @selection-change="crud.selectionChangeHandler"
     >
       <el-table-column type="expand">
         <template slot-scope="props">
@@ -50,8 +54,8 @@
           </el-form>
         </template>
       </el-table-column>
-      <el-table-column prop="functionName" label="函数文件名称"/>
-      <el-table-column prop="description" label="描述"/>
+      <el-table-column prop="functionName" label="函数文件名称" />
+      <el-table-column prop="description" label="描述" />
       <el-table-column label="代码详情" width="100px">
         <template slot-scope="scope">
           <el-button size="mini" type="text" @click="info(scope.row.code)">代码检查</el-button>
@@ -59,8 +63,8 @@
       </el-table-column>
       <el-table-column prop="score" label="相似度得分" align="center">
         <template slot-scope="scope">
-          <el-progress v-if="scope.row.score  >= 50" :percentage="scope.row.score" status="exception"></el-progress>
-          <el-progress v-if="scope.row.score  <= 50" :percentage="scope.row.score" status="success"></el-progress>
+          <el-progress v-if="scope.row.score >= 50" :percentage="scope.row.score" status="exception" />
+          <el-progress v-if="scope.row.score <= 50" :percentage="scope.row.score" status="success" />
           <!--          <el-tag v-if="scope.row.time <= 300">{{ scope.row.score }}</el-tag>-->
           <!--          <el-tag v-else-if="scope.row.time <= 1000" type="warning">{{ scope.row.score }}</el-tag>-->
           <!--          <el-tag v-else type="danger">{{ scope.row.score }}</el-tag>-->
@@ -101,11 +105,11 @@
     </el-table>
     <el-dialog :visible.sync="dialog" title="异常详情" append-to-body top="30px" width="85%">
       <!--      <pre>{{ errorInfo }}</pre>-->
-      <codemirror v-model="errorInfo" :options="options"></codemirror>
+      <codemirror v-model="errorInfo" :options="options" />
     </el-dialog>
 
     <!--分页组件-->
-    <pagination/>
+    <pagination />
   </div>
 </template>
 
@@ -128,8 +132,8 @@ require('codemirror/mode/css/css.js')
 require('codemirror/mode/sql/sql.js')
 require('codemirror/mode/shell/shell.js')
 
-import 'codemirror/lib/codemirror.css'//引入样式文件
-require('codemirror/mode/javascript/javascript.js')//引入JavaScript格式结合option里面的mode使用
+import 'codemirror/lib/codemirror.css'// 引入样式文件
+require('codemirror/mode/javascript/javascript.js')// 引入JavaScript格式结合option里面的mode使用
 // 折叠功能需引入的文件start
 import 'codemirror/addon/fold/foldgutter.css'
 import 'codemirror/addon/fold/foldcode'
@@ -188,7 +192,7 @@ export default {
         smartIndent: true, // 上下文缩进
         lineNumbers: true, // 是否显示行号
         styleActiveLine: true, // 高亮选中行
-        viewportMargin: Infinity, //处理高度自适应时搭配使用
+        viewportMargin: Infinity, // 处理高度自适应时搭配使用
         showCursorWhenSelecting: true, // 当选择处于活动状态时是否应绘制游标
         mode: 'javascript'
       }
@@ -203,7 +207,7 @@ export default {
     },
     // 获取异常详情
     doAnalyze() {
-      this.$router.push({ path: '/compare/index', query: { code1: 445177401023668152, code2: 445177401023669296 } })
+      this.$router.push({ path: '/compare/index', query: { code1: 445177401023668152, code2: 445177401023669296 }})
     },
     info(id) {
       console.log(id)

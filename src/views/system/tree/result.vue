@@ -2,47 +2,47 @@
   <div class="app-container">
     <el-descriptions title="源函数信息" :column="3" border>
       <el-descriptions-item label="函数名称" label-class-name="my-label" content-class-name="my-content">
-        {{this.codeInfoOne.functionName}}
+        {{ this.codeInfoOne.functionName }}
       </el-descriptions-item>
-      <el-descriptions-item label="编译优化级别">{{this.codeInfoOne.level}}</el-descriptions-item>
-      <el-descriptions-item label="目标架构">{{this.codeInfoOne.archTarget}}</el-descriptions-item>
-      <el-descriptions-item label="混淆方式">{{this.codeInfoOne.obs}}</el-descriptions-item>
+      <el-descriptions-item label="编译优化级别">{{ this.codeInfoOne.level }}</el-descriptions-item>
+      <el-descriptions-item label="目标架构">{{ this.codeInfoOne.archTarget }}</el-descriptions-item>
+      <el-descriptions-item label="混淆方式">{{ this.codeInfoOne.obs }}</el-descriptions-item>
       <el-descriptions-item label="漏洞信息">
-        <el-tag v-if="!codeInfoTwo.faultInfo.includes('None')"   type="danger">{{this.codeInfoTwo.faultInfo}}</el-tag>
-        <el-tag v-if="codeInfoTwo.faultInfo.includes('None')"   type="success">{{this.codeInfoTwo.faultInfo}}</el-tag>
+        <el-tag v-if="!codeInfoTwo.faultInfo.includes('None')" type="danger">{{ this.codeInfoTwo.faultInfo }}</el-tag>
+        <el-tag v-if="codeInfoTwo.faultInfo.includes('None')" type="success">{{ this.codeInfoTwo.faultInfo }}</el-tag>
       </el-descriptions-item>
       <el-descriptions-item label="软件著作保护">
-        <el-tag v-if="!codeInfoTwo.protectInfo.includes('许可')"  type="danger" >{{this.codeInfoTwo.protectInfo}}</el-tag>
-        <el-tag v-if="codeInfoTwo.protectInfo.includes('许可')"  type="success" >{{this.codeInfoTwo.protectInfo}}</el-tag>
+        <el-tag v-if="!codeInfoTwo.protectInfo.includes('许可')" type="danger">{{ this.codeInfoTwo.protectInfo }}</el-tag>
+        <el-tag v-if="codeInfoTwo.protectInfo.includes('许可')" type="success">{{ this.codeInfoTwo.protectInfo }}</el-tag>
       </el-descriptions-item>
       <el-descriptions-item label="恶意代码标识">
-        <el-tag v-if="!codeInfoTwo.dangerInfo.includes('None')"  type="danger" >{{this.codeInfoTwo.dangerInfo}}</el-tag>
-        <el-tag v-if="codeInfoTwo.dangerInfo.includes('None')"  type="success" >{{this.codeInfoTwo.dangerInfo}}</el-tag>
+        <el-tag v-if="!codeInfoTwo.dangerInfo.includes('None')" type="danger">{{ this.codeInfoTwo.dangerInfo }}</el-tag>
+        <el-tag v-if="codeInfoTwo.dangerInfo.includes('None')" type="success">{{ this.codeInfoTwo.dangerInfo }}</el-tag>
       </el-descriptions-item>
-      <el-descriptions-item label="来源信息" :contentStyle="{'text-align': 'right'}">
+      <el-descriptions-item label="来源信息" :content-style="{'text-align': 'right'}">
         Apache 自建软件代码
       </el-descriptions-item>
     </el-descriptions>
     <el-descriptions title="相似函数信息" :column="3" border>
       <el-descriptions-item label="函数名称" label-class-name="my-label" content-class-name="my-content">
-        {{this.codeInfoTwo.functionName}}
+        {{ this.codeInfoTwo.functionName }}
       </el-descriptions-item>
-      <el-descriptions-item label="编译优化级别">{{this.codeInfoTwo.level}}</el-descriptions-item>
-      <el-descriptions-item label="目标架构">{{this.codeInfoTwo.archTarget}}</el-descriptions-item>
-      <el-descriptions-item label="混淆方式">{{this.codeInfoTwo.obs}}</el-descriptions-item>
+      <el-descriptions-item label="编译优化级别">{{ this.codeInfoTwo.level }}</el-descriptions-item>
+      <el-descriptions-item label="目标架构">{{ this.codeInfoTwo.archTarget }}</el-descriptions-item>
+      <el-descriptions-item label="混淆方式">{{ this.codeInfoTwo.obs }}</el-descriptions-item>
       <el-descriptions-item label="漏洞信息">
-        <el-tag v-if="!codeInfoTwo.faultInfo.includes('None')"   type="danger">{{this.codeInfoTwo.faultInfo}}</el-tag>
-        <el-tag v-if="codeInfoTwo.faultInfo.includes('None')"   type="success">{{this.codeInfoTwo.faultInfo}}</el-tag>
+        <el-tag v-if="!codeInfoTwo.faultInfo.includes('None')" type="danger">{{ this.codeInfoTwo.faultInfo }}</el-tag>
+        <el-tag v-if="codeInfoTwo.faultInfo.includes('None')" type="success">{{ this.codeInfoTwo.faultInfo }}</el-tag>
       </el-descriptions-item>
       <el-descriptions-item label="软件著作保护">
-        <el-tag v-if="!codeInfoTwo.protectInfo.includes('许可')"  type="danger" >{{this.codeInfoTwo.protectInfo}}</el-tag>
-        <el-tag v-if="codeInfoTwo.protectInfo.includes('许可')"  type="success" >{{this.codeInfoTwo.protectInfo}}</el-tag>
+        <el-tag v-if="!codeInfoTwo.protectInfo.includes('许可')" type="danger">{{ this.codeInfoTwo.protectInfo }}</el-tag>
+        <el-tag v-if="codeInfoTwo.protectInfo.includes('许可')" type="success">{{ this.codeInfoTwo.protectInfo }}</el-tag>
       </el-descriptions-item>
       <el-descriptions-item label="恶意代码标识">
-        <el-tag v-if="!codeInfoTwo.dangerInfo.includes('None')"  type="danger" >{{this.codeInfoTwo.dangerInfo}}</el-tag>
-        <el-tag v-if="codeInfoTwo.dangerInfo.includes('None')"  type="success" >{{this.codeInfoTwo.dangerInfo}}</el-tag>
+        <el-tag v-if="!codeInfoTwo.dangerInfo.includes('None')" type="danger">{{ this.codeInfoTwo.dangerInfo }}</el-tag>
+        <el-tag v-if="codeInfoTwo.dangerInfo.includes('None')" type="success">{{ this.codeInfoTwo.dangerInfo }}</el-tag>
       </el-descriptions-item>
-      <el-descriptions-item label="来源信息" :contentStyle="{'text-align': 'right'}">
+      <el-descriptions-item label="来源信息" :content-style="{'text-align': 'right'}">
         字节跳动软件研发赔付项目专项代码
       </el-descriptions-item>
     </el-descriptions>
@@ -68,20 +68,10 @@ export default {
   components: { CodeDiff },
   cruds() {
     return [
-      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict } })
+      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict }})
     ]
   },
   mixins: [presenter(), header(), form(defaultForm)],
-  beforeCreate() {
-    this.initGetInfo()
-  },
-  created() {
-    console.log('roter data:', this.$router)
-    console.log('roter data:', this.$route.query)
-    console.log('roter data:', this.$router.params)
-    console.log('roter data:', this.props)
-    this.initGetInfo()
-  },
   data() {
     return {
       queryTypeOptions: [
@@ -105,6 +95,16 @@ export default {
       codeInfoTwo: {},
       showCode: null
     }
+  },
+  beforeCreate() {
+    this.initGetInfo()
+  },
+  created() {
+    console.log('roter data:', this.$router)
+    console.log('roter data:', this.$route.query)
+    console.log('roter data:', this.$router.params)
+    console.log('roter data:', this.props)
+    this.initGetInfo()
   },
   methods: {
     // 获取数据前设置好接口地址

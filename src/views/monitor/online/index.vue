@@ -55,7 +55,8 @@
       :old-string="dynamic"
       :new-string="'121321312'"
       file-name="test.txt"
-      output-format="side-by-side"/>
+      output-format="side-by-side"
+    />
   </div>
 </template>
 <script>

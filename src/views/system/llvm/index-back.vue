@@ -33,7 +33,7 @@
             <el-table-column type="selection" width="55" />
             <el-table-column :show-overflow-tooltip="true" prop="vectorId" label="ID" />
             <el-table-column :show-overflow-tooltip="true" prop="functionName" label="函數名詞" />
-            <el-table-column :show-overflow-tooltip="true" prop="score" label="得分" >
+            <el-table-column :show-overflow-tooltip="true" prop="score" label="得分">
               <template slot-scope="scope">
                 <el-tag v-if="scope.row.time <= 342">{{ scope.row.score }}</el-tag>
                 <el-tag v-else-if="scope.row.time <= 1000" type="warning">{{ scope.row.score }}</el-tag>
@@ -75,29 +75,30 @@
         </el-card>
       </el-col>
     </el-row>
-     <div class="app-container">
+    <div class="app-container">
       <p class="warn-content">
         Yaml编辑器 基于
         <a href="https://github.com/codemirror/CodeMirror" target="_blank">CodeMirror</a>，
         主题预览地址 <a href="https://codemirror.net/demo/theme.html#idea" target="_blank">Theme</a>
       </p>
-      <Yaml v-model="inputValue" :value="inputValue" :height="height"  />
+      <Yaml v-model="inputValue" :value="inputValue" :height="height" />
       <el-button
-         class="filter-item"
-         size="mini"
-         style="float: right;padding: 4px 10px"
-         type="primary"
-         icon="el-icon-plus"
-         @click="handleCommitCode()"
-       >提交
+        class="filter-item"
+        size="mini"
+        style="float: right;padding: 4px 10px"
+        type="primary"
+        icon="el-icon-plus"
+        @click="handleCommitCode()"
+      >提交
       </el-button>
-     </div>
+    </div>
 
     <code-diff
       :old-string="inputValue"
       :new-string="showCode"
       file-name="test.txt"
-      output-format="side-by-side"/>
+      output-format="side-by-side"
+    />
   </div>
 </template>
 
@@ -143,7 +144,7 @@ export default {
       inputValue: `adding your llvm code here\n for example：
       `,
       searchData: [],
-      showCode : null
+      showCode: null
     }
   },
   methods: {

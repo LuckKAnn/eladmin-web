@@ -1,18 +1,21 @@
 <template>
   <div class="app-container">
-    <el-row :gutter="10">
-
-    </el-row>
+    <el-row :gutter="10" />
     <!--表单组件-->
-    <el-dialog append-to-body :close-on-click-modal="false" :before-close="crud.cancelCU" :visible="crud.status.cu > 0"
-               :title="crud.status.title" width="500px"
+    <el-dialog
+      append-to-body
+      :close-on-click-modal="false"
+      :before-close="crud.cancelCU"
+      :visible="crud.status.cu > 0"
+      :title="crud.status.title"
+      width="500px"
     >
       <el-form ref="form" :model="form" :rules="rules" size="small" label-width="80px">
         <el-form-item label="字典名称" prop="name">
-          <el-input v-model="form.name" style="width: 370px;"/>
+          <el-input v-model="form.name" style="width: 370px;" />
         </el-form-item>
         <el-form-item label="描述">
-          <el-input v-model="form.description" style="width: 370px;"/>
+          <el-input v-model="form.description" style="width: 370px;" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -26,56 +29,56 @@
         <el-form ref="form" :model="form">
           <el-col :span="12" type="flex" justify="center">
             <el-form-item label="函数名称">
-              <el-input v-model="form.name" style="width: 300px;" placeholder="请输入待测LLVM函数的名称"></el-input>
+              <el-input v-model="form.name" style="width: 300px;" placeholder="请输入待测LLVM函数的名称" />
               <!--            <el-input v-model="form.name" style="width: 300px;"></el-input>-->
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="函数信息简介">
-              <el-input v-model="form.name" style="width: 300px;" placeholder="请输入待测LLVM函数有关信息"></el-input>
+              <el-input v-model="form.name" style="width: 300px;" placeholder="请输入待测LLVM函数有关信息" />
               <!--            <el-input v-model="form.name" style="width: 300px;"></el-input>-->
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item label="编译优化等级">
               <el-select v-model="form.level" placeholder="请选择优化等级">
-                <el-option label="未优化" value="None"></el-option>
-                <el-option label="O1" value="O1"></el-option>
-                <el-option label="O2" value="O2"></el-option>
-                <el-option label="O3" value="O3"></el-option>
-                <el-option label="其他" value="other"></el-option>
+                <el-option label="未优化" value="None" />
+                <el-option label="O1" value="O1" />
+                <el-option label="O2" value="O2" />
+                <el-option label="O3" value="O3" />
+                <el-option label="其他" value="other" />
               </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item label="编译优化架构">
               <el-select v-model="form.arch" placeholder="请选择目标就架构">
-                <el-option label="x86_64" value="x86_64"></el-option>
-                <el-option label="ARM64" value="ARM64"></el-option>
-                <el-option label="其他" value="other"></el-option>
+                <el-option label="x86_64" value="x86_64" />
+                <el-option label="ARM64" value="ARM64" />
+                <el-option label="其他" value="other" />
               </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item label="混淆方式">
               <el-select v-model="form.hx" placeholder="请选择目标就架构">
-                <el-option label="未混淆" value="None"></el-option>
-                <el-option label="BCF" value="BCF"></el-option>
-                <el-option label="ACF" value="ACF"></el-option>
-                <el-option label="其他数据流混淆" value="其他数据流混淆"></el-option>
-                <el-option label="其他控制流" value="其他控制流"></el-option>
-                <el-option label="其他" value="other"></el-option>
+                <el-option label="未混淆" value="None" />
+                <el-option label="BCF" value="BCF" />
+                <el-option label="ACF" value="ACF" />
+                <el-option label="其他数据流混淆" value="其他数据流混淆" />
+                <el-option label="其他控制流" value="其他控制流" />
+                <el-option label="其他" value="other" />
               </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="24">
-            <codemirror  v-model="seeCodeInfo" :options="options"></codemirror>
-            <el-divider></el-divider>
+            <codemirror v-model="seeCodeInfo" :options="options" />
+            <el-divider />
             <!--          <Yaml v-model="inputValue" :value="inputValue" :height="500" style="width: 600px;"/>-->
           </el-col>
           <el-col :span="6" type="flex" justify="end">
             <el-form-item>
-              <el-button  type="primary" @click="handleSearchCodeByFuncInfo">寻找相似</el-button>
+              <el-button type="primary" @click="handleSearchCodeByFuncInfo">寻找相似</el-button>
             </el-form-item>
           </el-col>
 
@@ -91,8 +94,7 @@
         <!--        </el-button>-->
       </el-col>
     </el-row>
-    <div class="app-container">
-    </div>
+    <div class="app-container" />
   </div>
 </template>
 
@@ -121,8 +123,8 @@ require('codemirror/mode/css/css.js')
 require('codemirror/mode/sql/sql.js')
 require('codemirror/mode/shell/shell.js')
 
-import 'codemirror/lib/codemirror.css'//引入样式文件
-require('codemirror/mode/javascript/javascript.js')//引入JavaScript格式结合option里面的mode使用
+import 'codemirror/lib/codemirror.css'// 引入样式文件
+require('codemirror/mode/javascript/javascript.js')// 引入JavaScript格式结合option里面的mode使用
 // 折叠功能需引入的文件start
 import 'codemirror/addon/fold/foldgutter.css'
 import 'codemirror/addon/fold/foldcode'
@@ -137,7 +139,7 @@ export default {
   components: { crudOperation, pagination, rrOperation, udOperation, dictDetail, Yaml, CodeDiff, codemirror },
   cruds() {
     return [
-      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict } })
+      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict }})
     ]
   },
   mixins: [presenter(), header(), form(defaultForm)],
@@ -211,10 +213,10 @@ export default {
         this.searchData = res
         this.thisVid = 445177401023661798
       })
-      this.$router.push({ path: '/detail', query: { code1: 445177401023668152, code2: 445177401023669296 } })
+      this.$router.push({ path: '/detail', query: { code1: 445177401023668152, code2: 445177401023669296 }})
     },
     handleGoDetail(id) {
-      this.$router.push({ path: '/compare/index', query: { code1: id, code2: this.thisVid } })
+      this.$router.push({ path: '/compare/index', query: { code1: id, code2: this.thisVid }})
     },
     handleCommitCode() {
       console.log(this.inputValue)

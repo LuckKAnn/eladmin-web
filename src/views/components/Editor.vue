@@ -8,7 +8,7 @@
       <wang-editor v-model="editorContent" style="height: 500px; overflow-y: hidden;" />
     </el-row>
   </div>
-  
+
 </template>
 
 <script>

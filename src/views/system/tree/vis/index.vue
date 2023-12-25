@@ -1,5 +1,5 @@
 <template>
-  <div id="myChart"></div>
+  <div id="myChart" />
 </template>
 
 <style>
@@ -12,17 +12,17 @@
 
 export default {
   name: 'HeatMapVis',
+  props: {
+    scoreArray: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
       xlabelProps: Array.from({ length: 16 }, (_, index) => index),
       ylabelProps: Array.from({ length: 16 }, (_, index) => index),
       scoreData: []
-    }
-  },
-  props: {
-    scoreArray: {
-      type: Array,
-      required: true
     }
   },
   watch: {
@@ -75,7 +75,7 @@ export default {
       if (param.dataType == 'node') {
         console.log('点击了节点', param)
       }
-      this.$router.push({ path: '/fault/funcDetail', query: { code1: 445177401023668152, code2: 445177401023669296 } })
+      this.$router.push({ path: '/fault/funcDetail', query: { code1: 445177401023668152, code2: 445177401023669296 }})
     },
     drawLine() {
       console.log('this is originData', this.initdata)
@@ -88,7 +88,7 @@ export default {
         grid: {
           // size: 200,
           // height: '50%',
-          height:'80%',
+          height: '80%',
           top: '10%'
         },
         xAxis: {

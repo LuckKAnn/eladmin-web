@@ -1,5 +1,5 @@
 <template>
-  <div id="myChart"></div>
+  <div id="myChart" />
 </template>
 
 <style>
@@ -171,11 +171,11 @@ export default {
       }
     }
     this.loadData()
-    //this.drawLine();
+    // this.drawLine();
   },
   methods: {
     drawLine() {
-      let myChart = this.$echarts.init(document.getElementById('myChart'))
+      const myChart = this.$echarts.init(document.getElementById('myChart'))
       myChart.setOption({
         title: {
           text: 'ECharts 关系图'
@@ -184,7 +184,7 @@ export default {
         series: [
           {
             type: 'graph', // 类型:关系图
-            layout: 'force', //图的布局，类型为力导图
+            layout: 'force', // 图的布局，类型为力导图
             symbolSize: 40, // 调整节点的大小
             roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
             edgeSymbol: ['circle', 'arrow'],
@@ -221,17 +221,17 @@ export default {
       })
     },
     loadData() {
-      let me = this
+      const me = this
       me.resData = this.initData
-      //主节点,第一父节点,只有一个
+      // 主节点,第一父节点,只有一个
       me.graphData.push({
         name: me.resData.name,
         des: me.resData.className,
         symbolSize: 80,
         category: 2
       })
-      //所有第二节点,科目
-      let dataSubjects = me.resData.subjects
+      // 所有第二节点,科目
+      const dataSubjects = me.resData.subjects
       if (dataSubjects.length > 0) {
         for (var b = 0; b < dataSubjects.length; b++) {
           me.graphData.push({
@@ -247,13 +247,13 @@ export default {
               show: true
             }
           })
-          let studentsData = dataSubjects[b].students
+          const studentsData = dataSubjects[b].students
           this.setGraph(me, studentsData, dataSubjects[b])
         }
       }
       me.drawLine()
     },
-    //递归
+    // 递归
     setGraph(me, studentsData, dataIncludes) {
       if (studentsData != undefined && studentsData.length > 0) {
         for (var c = 0; c < studentsData.length; c++) {

@@ -1,18 +1,21 @@
 <template>
   <div class="app-container">
-    <el-row :gutter="10">
-
-    </el-row>
+    <el-row :gutter="10" />
     <!--表单组件-->
-    <el-dialog append-to-body :close-on-click-modal="false" :before-close="crud.cancelCU" :visible="crud.status.cu > 0"
-               :title="crud.status.title" width="500px"
+    <el-dialog
+      append-to-body
+      :close-on-click-modal="false"
+      :before-close="crud.cancelCU"
+      :visible="crud.status.cu > 0"
+      :title="crud.status.title"
+      width="500px"
     >
       <el-form ref="form" :model="form" :rules="rules" size="small" label-width="80px">
         <el-form-item label="字典名称" prop="name">
-          <el-input v-model="form.name" style="width: 370px;"/>
+          <el-input v-model="form.name" style="width: 370px;" />
         </el-form-item>
         <el-form-item label="描述">
-          <el-input v-model="form.description" style="width: 370px;"/>
+          <el-input v-model="form.description" style="width: 370px;" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -25,35 +28,35 @@
       <el-col :xs="24" :sm="24" :md="10" :lg="11" :xl="11" style="margin-bottom: 10px;height: 800px">
         <el-form ref="form" :model="form" label-width="180px">
           <el-form-item label="文件名称">
-            <el-input v-model="form.name" style="width: 300px;"></el-input>
+            <el-input v-model="form.name" style="width: 300px;" />
           </el-form-item>
           <el-form-item label="编译优化等级">
             <el-select v-model="form.level" placeholder="请选择优化等级">
-              <el-option label="未优化" value="None"></el-option>
-              <el-option label="O1" value="O1"></el-option>
-              <el-option label="O2" value="O2"></el-option>
-              <el-option label="O3" value="O3"></el-option>
-              <el-option label="其他" value="other"></el-option>
+              <el-option label="未优化" value="None" />
+              <el-option label="O1" value="O1" />
+              <el-option label="O2" value="O2" />
+              <el-option label="O3" value="O3" />
+              <el-option label="其他" value="other" />
             </el-select>
           </el-form-item>
           <el-form-item label="编译优化架构">
             <el-select v-model="form.arch" placeholder="请选择目标就架构">
-              <el-option label="x86_64" value="x86_64"></el-option>
-              <el-option label="ARM64" value="ARM64"></el-option>
-              <el-option label="其他" value="other"></el-option>
+              <el-option label="x86_64" value="x86_64" />
+              <el-option label="ARM64" value="ARM64" />
+              <el-option label="其他" value="other" />
             </el-select>
           </el-form-item>
           <el-form-item label="混淆方式">
             <el-select v-model="form.hx" placeholder="请选择目标就架构">
-              <el-option label="未混淆" value="None"></el-option>
-              <el-option label="BCF" value="BCF"></el-option>
-              <el-option label="ACF" value="ACF"></el-option>
-              <el-option label="其他数据流混淆" value="其他数据流混淆"></el-option>
-              <el-option label="其他控制流" value="其他控制流"></el-option>
-              <el-option label="其他" value="other"></el-option>
+              <el-option label="未混淆" value="None" />
+              <el-option label="BCF" value="BCF" />
+              <el-option label="ACF" value="ACF" />
+              <el-option label="其他数据流混淆" value="其他数据流混淆" />
+              <el-option label="其他控制流" value="其他控制流" />
+              <el-option label="其他" value="other" />
             </el-select>
           </el-form-item>
-          <Yaml v-model="inputValue" :value="inputValue" :height="500" style="width: 600px;"/>
+          <Yaml v-model="inputValue" :value="inputValue" :height="500" style="width: 600px;" />
           <el-form-item>
             <el-button type="primary" @click="handleSearchCodeByFuncInfo">寻找相似</el-button>
           </el-form-item>
@@ -74,20 +77,32 @@
           <div class="head-container">
             <div v-if="crud.props.searchToggle">
               <!-- 搜索 -->
-              <el-input v-model="query.blurry" clearable size="small" placeholder="输入名称或者描述搜索"
-                        style="width: 200px;" class="filter-item" @keyup.enter.native="crud.toQuery"
+              <el-input
+                v-model="query.blurry"
+                clearable
+                size="small"
+                placeholder="输入名称或者描述搜索"
+                style="width: 200px;"
+                class="filter-item"
+                @keyup.enter.native="crud.toQuery"
               />
-              <rrOperation/>
+              <rrOperation />
             </div>
-            <crudOperation :permission="permission"/>
+            <crudOperation :permission="permission" />
           </div>
           <!--表格渲染-->
-          <el-table ref="table" v-loading="crud.loading" :data="searchData" highlight-current-row style="width: 100%;"
-                    @selection-change="crud.selectionChangeHandler" @current-change="handleCurrentChange"
+          <el-table
+            ref="table"
+            v-loading="crud.loading"
+            :data="searchData"
+            highlight-current-row
+            style="width: 100%;"
+            @selection-change="crud.selectionChangeHandler"
+            @current-change="handleCurrentChange"
           >
-            <el-table-column type="selection" width="55"/>
-            <el-table-column :show-overflow-tooltip="true" prop="vectorId" label="ID"/>
-            <el-table-column :show-overflow-tooltip="true" prop="functionName" label="函數名詞"/>
+            <el-table-column type="selection" width="55" />
+            <el-table-column :show-overflow-tooltip="true" prop="vectorId" label="ID" />
+            <el-table-column :show-overflow-tooltip="true" prop="functionName" label="函數名詞" />
             <el-table-column :show-overflow-tooltip="true" prop="score" label="得分">
               <template slot-scope="scope">
                 <el-tag v-if="scope.row.score <= 342">{{ scope.row.score }}</el-tag>
@@ -111,15 +126,12 @@
             </el-table-column>
           </el-table>
           <!--分页组件-->
-          <pagination/>
+          <pagination />
         </el-card>
       </el-col>
       <!-- 字典详情列表 -->
     </el-row>
-    <div class="app-container">
-
-    </div>
-
+    <div class="app-container" />
 
   </div>
 </template>
@@ -143,7 +155,7 @@ export default {
   components: { crudOperation, pagination, rrOperation, udOperation, dictDetail, Yaml, CodeDiff },
   cruds() {
     return [
-      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict } })
+      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict }})
     ]
   },
   mixins: [presenter(), header(), form(defaultForm)],
@@ -202,7 +214,7 @@ export default {
       })
     },
     handleGoDetail(id) {
-      this.$router.push({ path: '/compare/index', query: { code1: id, code2: this.thisVid } })
+      this.$router.push({ path: '/compare/index', query: { code1: id, code2: this.thisVid }})
     },
     handleCommitCode() {
       console.log(this.inputValue)

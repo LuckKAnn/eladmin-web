@@ -1,44 +1,44 @@
 <template>
   <div class="app-container">
     <el-row>
-      <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
+      <el-col :span="24"><div class="grid-content bg-purple-dark" /></el-col>
     </el-row>
     <el-row>
-      <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
+      <el-col :span="24"><div class="grid-content bg-purple-dark" /></el-col>
     </el-row>
     <el-form ref="form" :model="form" label-width="180px">
       <el-form-item label="文件名称">
-        <el-input v-model="form.name" placeholder="请输入文件相关名称"></el-input>
+        <el-input v-model="form.name" placeholder="请输入文件相关名称" />
       </el-form-item>
       <el-form-item label="文件信息">
-        <el-input v-model="form.name" placeholder="请输入文件相关信息"></el-input>
+        <el-input v-model="form.name" placeholder="请输入文件相关信息" />
       </el-form-item>
       <el-form-item label="编译优化等级">
         <el-select v-model="form.level" placeholder="请选择优化等级">
-          <el-option label="未优化" value="None"></el-option>
-          <el-option label="O1" value="O1"></el-option>
-          <el-option label="O2" value="O2"></el-option>
-          <el-option label="O3" value="O3"></el-option>
-          <el-option label="Os" value="Os"></el-option>
-          <el-option label="其他" value="other"></el-option>
+          <el-option label="未优化" value="None" />
+          <el-option label="O1" value="O1" />
+          <el-option label="O2" value="O2" />
+          <el-option label="O3" value="O3" />
+          <el-option label="Os" value="Os" />
+          <el-option label="其他" value="other" />
         </el-select>
       </el-form-item>
       <el-form-item label="编译优化架构">
         <el-select v-model="form.arch" placeholder="请选择目标就架构">
-          <el-option label="x86_64" value="x86_64"></el-option>
-          <el-option label="ARM64" value="ARM64"></el-option>
-          <el-option label="其他" value="other"></el-option>
+          <el-option label="x86_64" value="x86_64" />
+          <el-option label="ARM64" value="ARM64" />
+          <el-option label="其他" value="other" />
         </el-select>
       </el-form-item>
       <el-form-item label="混淆方式">
         <el-select v-model="form.hx" placeholder="请选择目标就架构">
-          <el-option label="未混淆" value="None"></el-option>
-          <el-option label="BCF" value="BCF"></el-option>
-          <el-option label="FLA" value="FLA"></el-option>
-          <el-option label="SUB" value="SUB"></el-option>
-          <el-option label="其他数据流混淆" value="其他数据流混淆"></el-option>
-          <el-option label="其他控制流" value="其他控制流"></el-option>
-          <el-option label="其他" value="other"></el-option>
+          <el-option label="未混淆" value="None" />
+          <el-option label="BCF" value="BCF" />
+          <el-option label="FLA" value="FLA" />
+          <el-option label="SUB" value="SUB" />
+          <el-option label="其他数据流混淆" value="其他数据流混淆" />
+          <el-option label="其他控制流" value="其他控制流" />
+          <el-option label="其他" value="other" />
         </el-select>
       </el-form-item>
       <!--      <el-upload-->
@@ -54,7 +54,7 @@
       <!--        <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>-->
       <!--      </el-upload>-->
       <el-form-item label="文件上传">
-        <load  data="fileInfo" @changeFileInfo="changeFileInfo"/>
+        <load data="fileInfo" @changeFileInfo="changeFileInfo" />
         <el-col :span="12"><el-button type="primary" @click="onSubmit">立即创建</el-button></el-col>
       </el-form-item>
     </el-form>
@@ -76,7 +76,7 @@ export default {
   components: { Load },
   cruds() {
     return [
-      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict } })
+      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict }})
     ]
   },
   mixins: [presenter(), header(), form(defaultForm)],
@@ -126,7 +126,7 @@ export default {
       commitFileSearch(commitInfo).then(res => {
         // 返回的是pathid
         console.log()
-        this.$router.push({ path: '/tree/index', query: { path: res } })
+        this.$router.push({ path: '/tree/index', query: { path: res }})
       })
       // 先提交请求，分析数据，获得结果
       // this.$router.push({ path: 'system/tree/index' })

@@ -4,13 +4,19 @@
     <div class="head-container">
       <div v-if="crud.props.searchToggle">
         <!-- 搜索 -->
-        <el-input v-model="query.blurry" clearable size="small" placeholder="模糊搜索" style="width: 200px;"
-                  class="filter-item" @keyup.enter.native="crud.toQuery"
+        <el-input
+          v-model="query.blurry"
+          clearable
+          size="small"
+          placeholder="模糊搜索"
+          style="width: 200px;"
+          class="filter-item"
+          @keyup.enter.native="crud.toQuery"
         />
-        <date-range-picker v-model="query.createTime" class="date-item"/>
-        <rrOperation/>
+        <date-range-picker v-model="query.createTime" class="date-item" />
+        <rrOperation />
       </div>
-      <crudOperation :permission="permission"/>
+      <crudOperation :permission="permission" />
     </div>
     <!--表格渲染-->
     <el-table
@@ -23,32 +29,38 @@
       @select-all="crud.selectAllChange"
       @selection-change="crud.selectionChangeHandler"
     >
-      <el-table-column type="selection" width="55"/>
-      <el-table-column :show-overflow-tooltip="true" label="数据集名称" width="125px" prop="name"/>
+      <el-table-column type="selection" width="55" />
+      <el-table-column :show-overflow-tooltip="true" label="数据集名称" width="125px" prop="name" />
       <el-table-column prop="icon" label="图标" align="center" width="60px">
         <template slot-scope="scope">
-          <svg-icon :icon-class="scope.row.icon ? scope.row.icon : ''"/>
+          <svg-icon :icon-class="scope.row.icon ? scope.row.icon : ''" />
         </template>
       </el-table-column>
-      <el-table-column prop="menuSort" align="center" label="来源信息">
-
-      </el-table-column>
-      <el-table-column :show-overflow-tooltip="true" prop="permission" label="权限标识"/>
-      <el-table-column :show-overflow-tooltip="true" prop="purpose" label="用途"/>
+      <el-table-column prop="menuSort" align="center" label="来源信息" />
+      <el-table-column :show-overflow-tooltip="true" prop="permission" label="权限标识" />
+      <el-table-column :show-overflow-tooltip="true" prop="purpose" label="用途" />
       <el-table-column prop="hidden" label="可见" width="75px">
         <template slot-scope="scope">
           <span v-if="scope.row.hidden">否</span>
           <span v-else>是</span>
         </template>
       </el-table-column>
-      <el-table-column prop="createTime" label="创建日期" width="135px"/>
-      <el-table-column v-if="checkPer(['admin','menu:edit','menu:del'])" label="操作" width="130px" align="center"
-                       fixed="right"
+      <el-table-column prop="createTime" label="创建日期" width="135px" />
+      <el-table-column
+        v-if="checkPer(['admin','menu:edit','menu:del'])"
+        label="操作"
+        width="130px"
+        align="center"
+        fixed="right"
       >
         <template slot-scope="scope">
           <div>
-            <el-button :disabled="disabledEdit" size="mini" type="primary" icon="el-icon-edit"
-                       @click="goToDatasetDetail(scope.row.id)"
+            <el-button
+              :disabled="disabledEdit"
+              size="mini"
+              type="primary"
+              icon="el-icon-edit"
+              @click="goToDatasetDetail(scope.row.id)"
             />
           </div>
         </template>
@@ -91,7 +103,7 @@ export default {
   name: 'Menu',
   components: { Treeselect, IconSelect, crudOperation, rrOperation, udOperation, DateRangePicker },
   cruds() {
-    return CRUD({ title: '菜单', url: 'api/system/dataset', crudMethod: { ...crudMenu } })
+    return CRUD({ title: '菜单', url: 'api/system/dataset', crudMethod: { ...crudMenu }})
   },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   data() {
@@ -115,7 +127,7 @@ export default {
   methods: {
     goToDatasetDetail(id) {
       console.log('this is ldsadasdasd', id)
-      this.$router.push({ path: '/fault/datasetDetail', query: { id: id } })
+      this.$router.push({ path: '/fault/datasetDetail', query: { id: id }})
     },
     // 新增与编辑前做的操作
     [CRUD.HOOK.afterToCU](crud, form) {

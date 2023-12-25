@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="head-container">
-      <Search/>
+      <Search />
       <crudOperation>
         <el-button
           slot="left"
@@ -17,8 +17,12 @@
       </crudOperation>
     </div>
     <!--表格渲染-->
-    <el-table ref="table" v-loading="crud.loading" :data="crud.data" style="width: 100%;"
-              @selection-change="crud.selectionChangeHandler"
+    <el-table
+      ref="table"
+      v-loading="crud.loading"
+      :data="crud.data"
+      style="width: 100%;"
+      @selection-change="crud.selectionChangeHandler"
     >
       <el-table-column type="expand">
         <template slot-scope="props">
@@ -47,8 +51,8 @@
           </el-form>
         </template>
       </el-table-column>
-      <el-table-column prop="functionName" label="函数文件名称"/>
-      <el-table-column prop="description" label="描述"/>
+      <el-table-column prop="functionName" label="函数文件名称" />
+      <el-table-column prop="description" label="描述" />
       <el-table-column label="代码详情" width="100px">
         <template slot-scope="scope">
           <el-button size="mini" type="text" @click="info(scope.row.id)">查看详情</el-button>
@@ -57,7 +61,7 @@
       <el-table-column prop="time" label="检索次数" align="center">
         <template slot-scope="scope">
           <el-tag>
-            <count-to :start-val="0" :end-val="scope.row.searchCount" :duration="2000" class="card-panel-num"/>
+            <count-to :start-val="0" :end-val="scope.row.searchCount" :duration="2000" class="card-panel-num" />
             次
           </el-tag>
           <!--          <el-tag v-else-if="scope.row.time <= 1000" type="warning">{{ scope.row.time }}1次</el-tag>-->
@@ -86,10 +90,10 @@
       </el-table-column>
     </el-table>
     <el-dialog :visible.sync="dialog" title="代码信息" append-to-body top="30px" width="85%">
-      <codemirror v-model="errorInfo" :options="options"></codemirror>
+      <codemirror v-model="errorInfo" :options="options" />
     </el-dialog>
     <!--分页组件-->
-    <pagination/>
+    <pagination />
   </div>
 </template>
 
@@ -112,8 +116,8 @@ require('codemirror/mode/css/css.js')
 require('codemirror/mode/sql/sql.js')
 require('codemirror/mode/shell/shell.js')
 
-import 'codemirror/lib/codemirror.css'//引入样式文件
-require('codemirror/mode/javascript/javascript.js')//引入JavaScript格式结合option里面的mode使用
+import 'codemirror/lib/codemirror.css'// 引入样式文件
+require('codemirror/mode/javascript/javascript.js')// 引入JavaScript格式结合option里面的mode使用
 // 折叠功能需引入的文件start
 import 'codemirror/addon/fold/foldgutter.css'
 import 'codemirror/addon/fold/foldcode'
@@ -130,14 +134,6 @@ export default {
     return CRUD({ title: '日志', url: 'es/list' })
   },
   mixins: [presenter()],
-  created() {
-    this.crud.optShow = {
-      add: false,
-      edit: false,
-      del: false,
-      download: true
-    }
-  },
   data() {
     return {
       options: {
@@ -151,11 +147,19 @@ export default {
         smartIndent: true, // 上下文缩进
         lineNumbers: true, // 是否显示行号
         styleActiveLine: true, // 高亮选中行
-        viewportMargin: Infinity, //处理高度自适应时搭配使用
+        viewportMargin: Infinity, // 处理高度自适应时搭配使用
         showCursorWhenSelecting: true, // 当选择处于活动状态时是否应绘制游标
         mode: 'javascript'
       },
       errorInfo: '', dialog: false
+    }
+  },
+  created() {
+    this.crud.optShow = {
+      add: false,
+      edit: false,
+      del: false,
+      download: true
     }
   },
   methods: {
@@ -170,7 +174,7 @@ export default {
       // getErrDetail(id).then(res => {
       //   this.errorInfo = res.exception
       // })
-      this.$router.push({ path: '/fault/funcDetail', query: { id: id} })
+      this.$router.push({ path: '/fault/funcDetail', query: { id: id }})
     },
     confirmDelAll() {
       this.$confirm(`确认清空所有操作日志吗?`, '提示', {

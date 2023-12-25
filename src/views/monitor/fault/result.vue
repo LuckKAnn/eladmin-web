@@ -21,14 +21,14 @@
         <el-tag v-if="!codeInfoOne.dangerious.includes('None')" type="danger">{{ this.codeInfoOne.dangerious }}</el-tag>
         <el-tag v-if="codeInfoOne.dangerious.includes('None')" type="success">{{ this.codeInfoOne.dangerious }}</el-tag>
       </el-descriptions-item>
-      <el-descriptions-item label="来源信息" >
-        <el-tag  type="danger">{{ this.codeInfoOne.functionFrom }}</el-tag>
+      <el-descriptions-item label="来源信息">
+        <el-tag type="danger">{{ this.codeInfoOne.functionFrom }}</el-tag>
       </el-descriptions-item>
-      <el-descriptions-item label="详细信息" >
-        <el-tag  type="danger">{{ this.codeInfoOne.detail }}</el-tag>
+      <el-descriptions-item label="详细信息">
+        <el-tag type="danger">{{ this.codeInfoOne.detail }}</el-tag>
       </el-descriptions-item>
       <el-descriptions-item span="3" label="详细代码">
-        <codemirror v-model="this.codeInfoOne.code" :options="options"></codemirror>
+        <codemirror v-model="this.codeInfoOne.code" :options="options" />
       </el-descriptions-item>
     </el-descriptions>
   </div>
@@ -49,8 +49,8 @@ require('codemirror/mode/css/css.js')
 require('codemirror/mode/sql/sql.js')
 require('codemirror/mode/shell/shell.js')
 
-import 'codemirror/lib/codemirror.css'//引入样式文件
-require('codemirror/mode/javascript/javascript.js')//引入JavaScript格式结合option里面的mode使用
+import 'codemirror/lib/codemirror.css'// 引入样式文件
+require('codemirror/mode/javascript/javascript.js')// 引入JavaScript格式结合option里面的mode使用
 // 折叠功能需引入的文件start
 import 'codemirror/addon/fold/foldgutter.css'
 import 'codemirror/addon/fold/foldcode'
@@ -69,16 +69,10 @@ export default {
   components: { codemirror },
   cruds() {
     return [
-      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict } })
+      CRUD({ title: '字典', url: 'api/dict', crudMethod: { ...crudDict }})
     ]
   },
   mixins: [presenter(), header(), form(defaultForm)],
-  beforeCreate() {
-    this.initGetInfo()
-  },
-  created() {
-    this.initGetInfo()
-  },
   data() {
     return {
       options: {
@@ -92,7 +86,7 @@ export default {
         smartIndent: true, // 上下文缩进
         lineNumbers: true, // 是否显示行号
         styleActiveLine: true, // 高亮选中行
-        viewportMargin: Infinity, //处理高度自适应时搭配使用
+        viewportMargin: Infinity, // 处理高度自适应时搭配使用
         showCursorWhenSelecting: true, // 当选择处于活动状态时是否应绘制游标
         mode: 'javascript'
       },
@@ -117,6 +111,12 @@ export default {
       codeInfoTwo: {},
       showCode: null
     }
+  },
+  beforeCreate() {
+    this.initGetInfo()
+  },
+  created() {
+    this.initGetInfo()
   },
   methods: {
     // 获取数据前设置好接口地址

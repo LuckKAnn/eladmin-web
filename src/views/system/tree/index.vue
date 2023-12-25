@@ -4,13 +4,13 @@
       <el-col :xs="9" :sm="6" :md="5" :lg="4" :xl="4">
         <div class="head-container">
           <el-input
-              v-model="deptName"
-              clearable
-              size="small"
-              placeholder="检索代码文件"
-              prefix-icon="el-icon-search"
-              class="filter-item"
-              @input="getDeptDatas"
+            v-model="deptName"
+            clearable
+            size="small"
+            placeholder="检索代码文件"
+            prefix-icon="el-icon-search"
+            class="filter-item"
+            @input="getDeptDatas"
           />
         </div>
         <!--        <el-tree-->
@@ -23,17 +23,17 @@
         <!--        />-->
         <!--        <el-tree :data="pathDatas" :props="myProps" :expand-on-click-node="false" @node-click="handlePathClick"/>-->
         <el-tree
-            :data="pathDatas"
-            node-key="id"
-            :expand-on-click-node="false"
-            @node-click="handlePathClick"
+          :data="pathDatas"
+          node-key="id"
+          :expand-on-click-node="false"
+          @node-click="handlePathClick"
         >
-      <span class="custom-tree-node" slot-scope="{ node, data }">
-        <span icon="el-icon-search">
-           <svg-icon icon-class="menu" v-if="data.dir"/>
-          <i class="el-icon-document" v-if="!data.dir"/>
-          {{ data.pathName }}</span>
-      </span>
+          <span slot-scope="{ node, data }" class="custom-tree-node">
+            <span icon="el-icon-search">
+              <svg-icon v-if="data.dir" icon-class="menu" />
+              <i v-if="!data.dir" class="el-icon-document" />
+              {{ data.pathName }}</span>
+          </span>
         </el-tree>
       </el-col>
       <!--用户数据-->
@@ -43,55 +43,60 @@
           <div v-if="crud.props.searchToggle">
             <!-- 搜索 -->
             <el-input
-                v-model="query.blurry"
-                clearable
-                size="small"
-                placeholder="检索指定函数名称"
-                style="width: 200px;"
-                class="filter-item"
-                @keyup.enter.native="crud.toQuery"
+              v-model="query.blurry"
+              clearable
+              size="small"
+              placeholder="检索指定函数名称"
+              style="width: 200px;"
+              class="filter-item"
+              @keyup.enter.native="crud.toQuery"
             />
             <el-select
-                v-model="query.enabled"
-                clearable
-                size="small"
-                placeholder="状态"
-                class="filter-item"
-                style="width: 90px"
-                @change="crud.toQuery"
+              v-model="query.enabled"
+              clearable
+              size="small"
+              placeholder="状态"
+              class="filter-item"
+              style="width: 90px"
+              @change="crud.toQuery"
             >
               <el-option
-                  v-for="item in enabledTypeOptions"
-                  :key="item.key"
-                  :label="item.display_name"
-                  :value="item.key"
+                v-for="item in enabledTypeOptions"
+                :key="item.key"
+                :label="item.display_name"
+                :value="item.key"
               />
             </el-select>
-            <rrOperation/>
+            <rrOperation />
           </div>
           <crudOperation show="" :permission="permission">
             <el-button
-                slot="right"
-                v-permission="['admin','user:add']"
-                :disabled="crud.selections.length === 0"
-                class="filter-item"
-                size="mini"
-                type="primary"
-                icon="el-icon-refresh-left"
-                @click="resetPwd(crud.selections)"
+              slot="right"
+              v-permission="['admin','user:add']"
+              :disabled="crud.selections.length === 0"
+              class="filter-item"
+              size="mini"
+              type="primary"
+              icon="el-icon-refresh-left"
+              @click="resetPwd(crud.selections)"
             >重新选择
             </el-button>
           </crudOperation>
         </div>
         <!--表单渲染-->
-        <el-table ref="table" highlight-current-row v-loading="false" :data="fileFunctionData"
-                  @current-change="handleCurrentChange" style="width: 100%;"
-                  @selection-change="crud.selectionChangeHandler"
+        <el-table
+          ref="table"
+          v-loading="false"
+          highlight-current-row
+          :data="fileFunctionData"
+          style="width: 100%;"
+          @current-change="handleCurrentChange"
+          @selection-change="crud.selectionChangeHandler"
         >
           <!--          <el-table-column :selectable="checkboxT" type="selection" width="55" />-->
-          <el-table-column :show-overflow-tooltip="true" prop="functionName" label="函数名称"/>
-          <el-table-column :show-overflow-tooltip="true" prop="codeLine" label="函数ID"/>
-          <el-table-column :show-overflow-tooltip="true" prop="comeInfo" label="文件来源"/>
+          <el-table-column :show-overflow-tooltip="true" prop="functionName" label="函数名称" />
+          <el-table-column :show-overflow-tooltip="true" prop="codeLine" label="函数ID" />
+          <el-table-column :show-overflow-tooltip="true" prop="comeInfo" label="文件来源" />
           <el-table-column :show-overflow-tooltip="true" prop="fileName" label="文件名称">
             <template slot-scope="scope">
               <div>{{ scope.row.fileName }}</div>
@@ -100,10 +105,10 @@
           <el-table-column label="是否可处理" align="center" prop="codeLine">
             <template slot-scope="scope">
               <el-switch
-                  v-model=" scope.row.codeLine > 255 || scope.row.codeLine < 5 ? false : true "
-                  disabled
-                  active-color="#409EFF"
-                  inactive-color="#F56C6C"
+                v-model=" scope.row.codeLine > 255 || scope.row.codeLine < 5 ? false : true "
+                disabled
+                active-color="#409EFF"
+                inactive-color="#F56C6C"
               />
             </template>
           </el-table-column>
@@ -115,28 +120,28 @@
           <el-table-column :show-overflow-tooltip="true" prop="codeLine" width="135" label="解析日期">
             <template slot-scope="scope">
 
-                2023-10-02 11:23:59
+              2023-10-02 11:23:59
             </template>
           </el-table-column>
           <el-table-column
-              v-if="checkPer(['admin','user:edit','user:del'])"
-              label="操作"
-              width="115"
-              align="center"
-              fixed="right"
+            v-if="checkPer(['admin','user:edit','user:del'])"
+            label="操作"
+            width="115"
+            align="center"
+            fixed="right"
           >
             <template slot-scope="scope">
-              <el-button type="primary" icon="el-icon-search" @click="redirectTo(scope.row.id)" circle></el-button>
+              <el-button type="primary" icon="el-icon-search" circle @click="redirectTo(scope.row.id)" />
             </template>
           </el-table-column>
         </el-table>
         <!--        <el-dialog :visible.sync="dialog" title="代码信息" top="30px" width="85%">-->
         <el-dialog :visible.sync="dialog" title="代码信息" top="30px" width="85%">
-          <codemirror v-model="seeCodeInfo" :options="options"></codemirror>
+          <codemirror v-model="seeCodeInfo" :options="options" />
           <!--                    <pre>{{ this.seeCodeInfo }}</pre>-->
         </el-dialog>
         <!--分页组件-->
-        <pagination/>
+        <pagination />
       </el-col>
     </el-row>
 
@@ -171,8 +176,8 @@ require('codemirror/mode/css/css.js')
 require('codemirror/mode/sql/sql.js')
 require('codemirror/mode/shell/shell.js')
 
-import 'codemirror/lib/codemirror.css'//引入样式文件
-require('codemirror/mode/javascript/javascript.js')//引入JavaScript格式结合option里面的mode使用
+import 'codemirror/lib/codemirror.css'// 引入样式文件
+require('codemirror/mode/javascript/javascript.js')// 引入JavaScript格式结合option里面的mode使用
 // 折叠功能需引入的文件start
 import 'codemirror/addon/fold/foldgutter.css'
 import 'codemirror/addon/fold/foldcode'
@@ -200,17 +205,11 @@ export default {
   name: 'User',
   components: { Treeselect, crudOperation, rrOperation, udOperation, pagination, DateRangePicker, codemirror },
   cruds() {
-    return CRUD({ title: '用户', url: 'api/user', crudMethod: { ...crudUser } })
+    return CRUD({ title: '用户', url: 'api/user', crudMethod: { ...crudUser }})
   },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   // 数据字典
   dicts: ['user_status'],
-  beforeCreate() {
-    // console.log("hhhhhh",this.$route.query.path)
-    getPath(this.$route.query.path).then(res => {
-      this.pathDatas = res
-    })
-  },
   data() {
     // 自定义验证
     const validPhone = (rule, value, callback) => {
@@ -224,8 +223,8 @@ export default {
     }
     return {
       cmOptions: {
-        mode: { name: 'javascript', json: true },//设置语法格式这里是JavaScript
-        lineNumbers: true, //显示行号
+        mode: { name: 'javascript', json: true }, // 设置语法格式这里是JavaScript
+        lineNumbers: true, // 显示行号
         // 代码折叠功能配置项start
         foldGutter: true,
         lineWrapping: true,
@@ -233,7 +232,7 @@ export default {
       },
       options: {
         line: true,
-        theme: "dracula", // 主题
+        theme: 'dracula', // 主题
         tabSize: 4, // 制表符的宽度
         indentUnit: 2, // 一个块应该缩进多少个空格（无论这在编辑语言中意味着什么）。默认值为 2。
         firstLineNumber: 1, // 从哪个数字开始计算行数。默认值为 1。
@@ -242,9 +241,9 @@ export default {
         smartIndent: true, // 上下文缩进
         lineNumbers: true, // 是否显示行号
         styleActiveLine: true, // 高亮选中行
-        viewportMargin: Infinity, //处理高度自适应时搭配使用
+        viewportMargin: Infinity, // 处理高度自适应时搭配使用
         showCursorWhenSelecting: true, // 当选择处于活动状态时是否应绘制游标
-        mode: "javascript",
+        mode: 'javascript'
       },
       dialog: false,
       seeCodeInfo: 'asddddddddd',
@@ -284,6 +283,12 @@ export default {
       }
     }
   },
+  beforeCreate() {
+    // console.log("hhhhhh",this.$route.query.path)
+    getPath(this.$route.query.path).then(res => {
+      this.pathDatas = res
+    })
+  },
   computed: {
     ...mapGetters([
       'user'
@@ -315,7 +320,7 @@ import { dateFormat, requestAnimationFrame, cancelAnimationFrame, rafTimeout, ca
       // })
       console.log(this.chooseData)
       // this.$router.push({ path: '/compare/index', query: { code1: 445177401023668152, code2: 445177401023669296 } })
-      this.$router.push({ path: '/detail', query: { code1: 445177401023668152, code2: 445177401023669296 } })
+      this.$router.push({ path: '/detail', query: { code1: 445177401023668152, code2: 445177401023669296 }})
     },
     handleCurrentChange(data) {
       console.log(data)
