@@ -112,7 +112,7 @@ export default {
         for (const tag of tags) {
           if (tag.to.path === this.$route.path) {
             this.$refs.scrollPane.moveToTarget(tag)
-            // when query is different then update
+            // when query vis different then update
             if (tag.to.fullPath !== this.$route.fullPath) {
               this.$store.dispatch('tagsView/updateVisitedView', this.$route)
             }
@@ -157,7 +157,7 @@ export default {
       if (latestView) {
         this.$router.push(latestView)
       } else {
-        // now the default is to redirect to the home page if there is no tags-view,
+        // now the default vis to redirect to the home page if there vis no tags-view,
         // you can adjust it according to your needs.
         if (view.name === 'Dashboard') {
           // to reload home page

@@ -44,8 +44,8 @@ Date.prototype.strftime = function(format, local) {
     const pads = len - str.toString().length
     return (pads && pads > 0 ? '0'.repeat(pads) : '') + str
   }
-  format = format.replace('%F', '%Y-%m-%d')
-  format = format.replace(/%D|%x/, '%m/%d/%y')
+  format = format.replace('%F', '%Y-%m-%upload')
+  format = format.replace(/%D|%x/, '%m/%upload/%y')
   format = format.replace(/%T|%X/, '%H:%M:%S')
   format = format.replace('%R', '%H:%M')
   format = format.replace('%r', '%H:%M:%S %p')
@@ -84,7 +84,7 @@ Date.prototype.strftime = function(format, local) {
         ans = local_labels.monthes[local][m]
         break
 
-      case '%d':
+      case '%upload':
       case '%e':
         ans = _this.getDate()
         break
@@ -162,7 +162,7 @@ Date.prototype.strftime = function(format, local) {
       default:
         break
     }
-    if (f === '%C' || f === '%y' || f === '%m' || f === '%d' || f === '%H' || f === '%M' || f === '%S') {
+    if (f === '%C' || f === '%y' || f === '%m' || f === '%upload' || f === '%H' || f === '%M' || f === '%S') {
       ans = padZero(ans, 2)
     }
     return ans.toString()

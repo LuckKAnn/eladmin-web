@@ -50,10 +50,16 @@
     </el-table>
     <!--分页组件-->
     <pagination />
+
+    <code-diff
+      :old-string="dynamic"
+      :new-string="'121321312'"
+      file-name="test.txt"
+      output-format="side-by-side"/>
   </div>
 </template>
-
 <script>
+import { CodeDiff } from 'v-code-diff'
 import { del } from '@/api/monitor/online'
 import CRUD, { presenter, header, crud } from '@crud/crud'
 import rrOperation from '@crud/RR.operation'
@@ -61,8 +67,9 @@ import crudOperation from '@crud/CRUD.operation'
 import pagination from '@crud/Pagination'
 
 export default {
+
   name: 'OnlineUser',
-  components: { pagination, crudOperation, rrOperation },
+  components: { pagination, crudOperation, rrOperation, CodeDiff },
   cruds() {
     return CRUD({ url: 'auth/online', title: '在线用户' })
   },
@@ -70,7 +77,10 @@ export default {
   data() {
     return {
       delLoading: false,
-      permission: {}
+      permission: {},
+      dynamic: `dwqdqwdqw
+      qwdqwdwqdqw
+      wqewqeqwe `
     }
   },
   created() {

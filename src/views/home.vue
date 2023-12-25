@@ -5,9 +5,9 @@
 
       <panel-group @handleSetLineChartData="handleSetLineChartData" />
 
-      <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
-        <line-chart :chart-data="lineChartData" />
-      </el-row>
+<!--      <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">-->
+<!--        <line-chart :chart-data="lineChartData" />-->
+<!--      </el-row>-->
       <el-row :gutter="32">
         <el-col :xs="24" :sm="24" :lg="8">
           <div class="chart-wrapper">
@@ -24,6 +24,11 @@
             <bar-chart />
           </div>
         </el-col>
+        <el-col :span="24">
+          <div class="chart-wrapper">
+            <Graph />
+          </div>
+        </el-col>
       </el-row>
     </div>
   </div>
@@ -36,7 +41,7 @@ import LineChart from './dashboard/LineChart'
 import RadarChart from '@/components/Echarts/RadarChart'
 import PieChart from '@/components/Echarts/PieChart'
 import BarChart from '@/components/Echarts/BarChart'
-
+import Graph from '@/views/monitor/fault/index.vue'
 const lineChartData = {
   newVisitis: {
     expectedData: [100, 120, 161, 134, 105, 160, 165],
@@ -64,7 +69,8 @@ export default {
     LineChart,
     RadarChart,
     PieChart,
-    BarChart
+    BarChart,
+    Graph
   },
   data() {
     return {

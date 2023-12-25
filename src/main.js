@@ -20,10 +20,14 @@ import './assets/styles/index.scss'
 import App from './App'
 import store from './store'
 import router from './router/routers'
+import * as echarts from 'echarts'
 
 import './assets/icons' // icon
 import './router/index' // permission control
-
+import ElementUI from 'element-ui'
+// import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+Vue.prototype.$echarts = echarts
+Vue.use(ElementUI)
 Vue.use(checkPer)
 Vue.use(permission)
 Vue.use(dict)

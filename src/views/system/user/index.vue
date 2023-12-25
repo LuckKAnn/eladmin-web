@@ -227,6 +227,7 @@ export default {
   mixins: [presenter(), header(), form(defaultForm), crud()],
   // 数据字典
   dicts: ['user_status'],
+
   data() {
     // 自定义验证
     const validPhone = (rule, value, callback) => {

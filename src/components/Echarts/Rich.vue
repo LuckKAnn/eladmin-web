@@ -52,7 +52,7 @@ export default {
       this.chart.setOption({
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b}: {c} ({d}%)'
+          formatter: '{a} <br/>{b}: {c} ({upload}%)'
         },
         legend: {
           orient: 'vertical',
@@ -88,7 +88,7 @@ export default {
             radius: ['40%', '55%'],
             label: {
               normal: {
-                formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{upload}%}  ',
                 backgroundColor: '#eee',
                 borderColor: '#aaa',
                 borderWidth: 1,

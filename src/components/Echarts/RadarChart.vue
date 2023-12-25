@@ -72,18 +72,18 @@ export default {
             }
           },
           indicator: [
-            { name: 'Sales', max: 10000 },
-            { name: 'Administration', max: 20000 },
-            { name: 'Information Techology', max: 20000 },
-            { name: 'Customer Support', max: 20000 },
-            { name: 'Development', max: 20000 },
-            { name: 'Marketing', max: 20000 }
+            { name: 'Java', max: 10000 },
+            { name: 'Cpp', max: 20000 },
+            { name: 'C#', max: 20000 },
+            { name: 'Python', max: 20000 },
+            { name: 'Golang', max: 20000 },
+            { name: 'C', max: 20000 }
           ]
         },
         legend: {
           left: 'center',
           bottom: '10',
-          data: ['Allocated Budget', 'Expected Spending', 'Actual Spending']
+          data: ['预处理之前', '可用检测', '漏洞']
         },
         series: [{
           type: 'radar',
@@ -100,15 +100,15 @@ export default {
           data: [
             {
               value: [5000, 7000, 12000, 11000, 15000, 14000],
-              name: 'Allocated Budget'
+              name: '预处理之前'
             },
             {
               value: [4000, 9000, 15000, 15000, 13000, 11000],
-              name: 'Expected Spending'
+              name: '可用检测'
             },
             {
               value: [5500, 11000, 12000, 15000, 12000, 12000],
-              name: 'Actual Spending'
+              name: '漏洞'
             }
           ],
           animationDuration: animationDuration

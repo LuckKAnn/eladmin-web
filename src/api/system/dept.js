@@ -8,6 +8,26 @@ export function getDepts(params) {
   })
 }
 
+export function getPath(params) {
+  console.log("this vis path"+ params)
+  return request({
+    url: 'process/path?path=' + params,
+    method: 'get'
+  })
+}
+export function getFaultGraph() {
+  return request({
+    url: 'graph/list',
+    method: 'get'
+  })
+}
+export function processFile(params) {
+  return request({
+    url: 'process/path?path=' + params,
+    method: 'post'
+  })
+}
+
 export function getDeptSuperior(ids, exclude) {
   exclude = exclude !== undefined ? exclude : false
   const data = ids.length || ids.length === 0 ? ids : Array.of(ids)

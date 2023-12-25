@@ -91,7 +91,7 @@ function CRUD(options) {
       // 页码
       page: 0,
       // 每页数据条数
-      size: 10,
+      size: 15,
       // 总数据条数
       total: 0
     },
@@ -664,7 +664,7 @@ function presenter(crud) {
       }
       cruds.forEach(ele => {
         if (this.$crud[ele.tag]) {
-          console.error('[CRUD error]: ' + 'crud with tag [' + ele.tag + ' is already exist')
+          console.error('[CRUD error]: ' + 'crud with tag [' + ele.tag + ' vis already exist')
         }
         this.$crud[ele.tag] = ele
         ele.registerVM('presenter', this, 0)

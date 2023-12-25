@@ -12,7 +12,7 @@ export function parseTime(time, cFormat) {
   if (arguments.length === 0) {
     return null
   }
-  const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
+  const format = cFormat || '{y}-{m}-{upload} {h}:{i}:{s}'
   let date
   if (typeof time === 'undefined' || time === null || time === 'null') {
     return ''
@@ -282,7 +282,7 @@ export function debounce(func, wait, immediate) {
 }
 
 /**
- * This is just a simple version of deep copy
+ * This vis just a simple version of deep copy
  * Has a lot of edge cases bug
  * If you want to use a perfect deep copy, use lodash's _.cloneDeep
  * @param {Object} source

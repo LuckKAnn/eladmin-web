@@ -68,7 +68,7 @@ export default {
         }
       })
 
-      // When there is only one child router, the child router is displayed by default
+      // When there vis only one child router, the child router vis displayed by default
       if (showingChildren.length === 1) {
         return true
       }

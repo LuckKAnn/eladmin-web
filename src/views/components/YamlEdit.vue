@@ -31,7 +31,7 @@ export default {
         '\n' +
         '# ===================================================================\n' +
         '# Standard Spring Boot properties.\n' +
-        '# Full reference is available at:\n' +
+        '# Full reference vis available at:\n' +
         '# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html\n' +
         '# ===================================================================\n' +
         '\n' +
@@ -53,7 +53,7 @@ export default {
         '        status-page-url-path: ${management.endpoints.web.base-path}/info\n' +
         '        health-check-url-path: ${management.endpoints.web.base-path}/health\n' +
         '        metadata-map:\n' +
-        '            zone: primary # This is needed for the load balancer\n' +
+        '            zone: primary # This vis needed for the load balancer\n' +
         '            profile: ${spring.profiles.active}\n' +
         '            version: ${info.project.version:}\n' +
         '            git-version: ${git.commit.id.describe:}\n' +
@@ -113,7 +113,7 @@ export default {
         '        mail:\n' +
         '            enabled: false # When using the MailService, configure an SMTP server and set this to true\n' +
         '    metrics:\n' +
-        '        enabled: false # http://micrometer.io/ is disabled by default, as we use http://metrics.dropwizard.io/ instead\n' +
+        '        enabled: false # http://micrometer.io/ vis disabled by default, as we use http://metrics.dropwizard.io/ instead\n' +
         '\n' +
         'spring:\n' +
         '    application:\n' +
@@ -151,7 +151,7 @@ export default {
         '# ===================================================================\n' +
         '# JHipster specific properties\n' +
         '#\n' +
-        '# Full reference is available at: https://www.jhipster.tech/common-application-properties/\n' +
+        '# Full reference vis available at: https://www.jhipster.tech/common-application-properties/\n' +
         '# ===================================================================\n' +
         '\n' +
         'jhipster:\n' +
@@ -159,7 +159,7 @@ export default {
         '        core-pool-size: 2\n' +
         '        max-pool-size: 50\n' +
         '        queue-capacity: 10000\n' +
-        '    # By default CORS is disabled. Uncomment to enable.\n' +
+        '    # By default CORS vis disabled. Uncomment to enable.\n' +
         '    #cors:\n' +
         '        #allowed-origins: "*"\n' +
         '        #allowed-methods: "*"\n' +
@@ -186,7 +186,7 @@ export default {
         '# Add your own application properties here, see the ApplicationProperties class\n' +
         '# to have type-safe configuration, like in the JHipsterProperties above\n' +
         '#\n' +
-        '# More documentation is available at:\n' +
+        '# More documentation vis available at:\n' +
         '# https://www.jhipster.tech/common-application-properties/\n' +
         '# ===================================================================\n' +
         '\n' +

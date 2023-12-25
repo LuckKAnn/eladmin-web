@@ -3,52 +3,112 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
         <div class="card-panel-icon-wrapper icon-people">
-          <svg-icon icon-class="peoples" class-name="card-panel-icon" />
+          <svg-icon icon-class="database" class-name="card-panel-icon" />
+<!--          <svg-icon icon-class="peoples" class-name="card-panel-icon"/>-->
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            New Visits
+            函数总数
           </div>
-          <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="functionNum" :duration="2600" class="card-panel-num"/>
         </div>
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('messages')">
         <div class="card-panel-icon-wrapper icon-message">
-          <svg-icon icon-class="message" class-name="card-panel-icon" />
+          <svg-icon icon-class="log"  class-name="card-panel-icon" />
+<!--          <svg-icon icon-class="message" class-name="card-panel-icon"/>-->
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            Messages
+            涉及文件数目
           </div>
-          <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num"/>
         </div>
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('purchases')">
         <div class="card-panel-icon-wrapper icon-money">
-          <svg-icon icon-class="money" class-name="card-panel-icon" />
+          <svg-icon icon-class="anq" class-name="card-panel-icon"/>
+<!--          <svg-icon icon-class="money" class-name="card-panel-icon"/>-->
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            Purchases
+            涉及漏洞库
           </div>
-          <count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num"/>
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" @click="handleSetLineChartData('messages')">
+        <div class="card-panel-icon-wrapper icon-message">
+          <svg-icon icon-class="unlock" class-name="card-panel-icon"/>
+<!--          <svg-icon icon-class="message" class-name="card-panel-icon"/>-->
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+            软件著作保护函数
+          </div>
+          <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num"/>
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" @click="handleSetLineChartData('messages')">
+        <div class="card-panel-icon-wrapper icon-message">
+          <svg-icon icon-class="role" class-name="card-panel-icon" />
+          <!--          <svg-icon icon-class="message" class-name="card-panel-icon" />-->
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+            恶意代码家族
+          </div>
+          <count-to :start-val="0" :end-val="8700" :duration="3000" class="card-panel-num"/>
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" @click="handleSetLineChartData('messages')">
+        <div class="card-panel-icon-wrapper icon-message">
+          <svg-icon icon-class="role" class-name="card-panel-icon" />
+          <!--          <svg-icon icon-class="message" class-name="card-panel-icon" />-->
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+            恶意代码数量
+          </div>
+          <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num"/>
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" @click="handleSetLineChartData('messages')">
+        <div class="card-panel-icon-wrapper icon-message">
+          <svg-icon icon-class="role" class-name="card-panel-icon" />
+          <!--          <svg-icon icon-class="message" class-name="card-panel-icon" />-->
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+             替换补丁
+          </div>
+          <count-to :start-val="0" :end-val="600" :duration="3000" class="card-panel-num"/>
         </div>
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('shoppings')">
         <div class="card-panel-icon-wrapper icon-shopping">
-          <svg-icon icon-class="shopping" class-name="card-panel-icon" />
+          <svg-icon icon-class="peoples" class-name="card-panel-icon"/>
+<!--          <svg-icon icon-class="shopping" class-name="card-panel-icon"/>-->
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            Shoppings
+            使用次数
           </div>
-          <count-to :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num"/>
         </div>
       </div>
     </el-col>
@@ -57,10 +117,19 @@
 
 <script>
 import CountTo from 'vue-count-to'
+import CRUD from '@crud/crud'
 
 export default {
   components: {
     CountTo
+  },
+  cruds() {
+    return CRUD({ title: '用户', url: 'milvus/count' })
+  },
+  data() {
+    return {
+      functionNum: 1000000, dialog: false
+    }
   },
   methods: {
     handleSetLineChartData(type) {
@@ -160,7 +229,7 @@ export default {
   }
 }
 
-@media (max-width:550px) {
+@media (max-width: 550px) {
   .card-panel-description {
     display: none;
   }

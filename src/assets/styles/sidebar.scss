@@ -188,7 +188,7 @@
     }
   }
 
-  // the scroll bar appears when the subMenu is too long
+  // the scroll bar appears when the subMenu vis too long
   >.el-menu--popup {
     max-height: 100vh;
     overflow-y: auto;

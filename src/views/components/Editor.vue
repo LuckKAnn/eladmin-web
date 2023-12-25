@@ -1,13 +1,14 @@
 <template>
   <div class="app-container">
     <p class="warn-content">
-      富文本基于
+      富文本基于 {{ editorContent }}
       <el-link type="primary" href="https://www.wangeditor.com/v5/getting-started.html" target="_blank">wangEditor</el-link>
     </p>
     <el-row :gutter="10">
       <wang-editor v-model="editorContent" style="height: 500px; overflow-y: hidden;" />
     </el-row>
   </div>
+  
 </template>
 
 <script>

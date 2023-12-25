@@ -55,6 +55,44 @@ export const constantRouterMap = [
         component: (resolve) => require(['@/views/system/user/center'], resolve),
         name: '个人中心',
         meta: { title: '个人中心' }
+      },
+      {
+        path: '/compare/index',
+        component: (resolve) => require(['@/views/system/tree/result'], resolve),
+        hidden: true,
+        name: 'compare',
+        props: true,
+        params: true
+      },
+      {
+        path: '/fault/funcDetail',
+        component: (resolve) => require(['@/views/monitor/fault/result'], resolve),
+        hidden: true,
+        name: 'fault',
+        props: true,
+        params: true
+      },
+      {
+        path: '/fault/datasetDetail',
+        component: (resolve) => require(['@/views/monitor/fault/DatasetResult'], resolve),
+        hidden: true,
+        name: 'fault',
+        props: true,
+        params: true
+      },
+      {
+        path: '/tree/index',
+        component: (resolve) => require(['@/views/system/tree/index'], resolve),
+        hidden: true,
+        props: true,
+        params: true
+      },
+      {
+        path: '/detail',
+        component: (resolve) => require(['@/views/system/tree/compareall.vue'], resolve),
+        hidden: true,
+        props: true,
+        params: true
       }
     ]
   }
